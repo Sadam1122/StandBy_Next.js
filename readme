@@ -1,0 +1,3 @@
+docker exec -it nyoba psql -U postgres -d postgres (ini buat build sql)
+untuk buat akun admin INSERT INTO users (name, email, password, role) VALUES ('admin', 'admin@example.com', 'hashed_password', 'admin');
+ SELECT * FROM users; untuk cek users
