@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import supabase from '../../components/SupabaseClient';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 const SettingsPage = () => {
   const [fullName, setFullName] = useState('');
@@ -61,7 +61,7 @@ const SettingsPage = () => {
 
     const { data: signedUrlData, error: signedUrlError } = await supabase.storage
       .from('avatars')
-      .createSignedUrl(uploadData.path, 60 * 60);
+      .createSignedUrl(uploadData.path, 60 * 60 * 24 * 365 * 10);
 
     if (signedUrlError) {
       console.error('Error creating signed URL:', signedUrlError);
@@ -121,7 +121,7 @@ const SettingsPage = () => {
         
         {/* Avatar */}
         {avatar && (
-          <Image
+          <img
             src={avatar} 
             alt="Avatar" 
             className="h-36 w-36 rounded-full mb-6 border-2 border-gray-300 shadow-md" 
@@ -163,7 +163,7 @@ const SettingsPage = () => {
             />
             <button
               onClick={handleUpdateAvatar}
-              className="bg-blue-500 text-white rounded-lg p-2 w-full hover:bg-blue-600 mt-4 transition duration-200"
+              className="bg-red-500 text-white rounded-lg p-2 w-full hover:bg-red-800 mt-4 transition duration-200"
             >
               Update Avatar
             </button>
