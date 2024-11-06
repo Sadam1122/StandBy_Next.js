@@ -61,7 +61,7 @@ const LoginPage = () => {
       </div>
       <div className="w-1/2 flex items-center justify-center bg-[#F7F7F7]">
         <div className="bg-white p-6 rounded shadow-md w-80">
-          <h2 className="text-lg font-semibold mb-4">Masuk Akun</h2>
+          <h2 className="text-lg font-semibold mb-4 text-black">Masuk Akun</h2>
           {error && <p className="text-red-500 text-center mb-4">{error}</p>}
           <input
             type="text"
