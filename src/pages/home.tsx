@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
         onClick={dokumen}
         className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 mb-10"
       >
-        Pergi Ke Halaman Dokument Test Report
+        Pergi Ke Halaman Dokumen Test Report
       </button>
     </div>
   );
