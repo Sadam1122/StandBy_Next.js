@@ -176,7 +176,7 @@ const handleInputChange1 = (
                 {tableData1.map((rowData, rowIndex) => (
                   <tr key={rowIndex} className="text-center hover:bg-gray-100 transition duration-150">
                     <td className="px-2 md:px-4 py-2 border border-gray-300">{rowIndex + 1}</td>
-                    <td className="px-2 md:px-4 py-2 border border-gray-300">{keteranganData1[rowIndex]}</td>
+                    <td className="px-2 md:px-4 py-2 border border-gray-300 text-left">{keteranganData1[rowIndex]}</td>
                     <td className="px-2 md:px-4 py-2 border border-gray-300">
                       <textarea
                         className="w-full p-2 bg-transparent border-none resize-y placeholder-gray-400 focus:outline-none focus:ring-0"
@@ -220,7 +220,7 @@ const handleInputChange1 = (
                 {tableData2.map((rowData, rowIndex) => (
                   <tr key={rowIndex} className="text-center hover:bg-gray-100 transition duration-150">
                     <td className="px-2 md:px-4 py-2 border border-gray-300">{rowIndex + 1}</td>
-                    <td className="px-2 md:px-4 py-2 border border-gray-300">{keteranganData2[rowIndex]}</td>
+                    <td className="px-2 md:px-4 py-2 border border-gray-300 text-left">{keteranganData2[rowIndex]}</td>
                    
                     <td className="px-2 md:px-4 py-2 border border-gray-300">
                       <select
