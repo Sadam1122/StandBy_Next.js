@@ -17,12 +17,43 @@ const HomePage: React.FC = () => {
   );
 
   const keteranganData1 = [
+    "Essential performance requirements 1 Sub clause 201.12.1.104 or generation of a visual and audible alarm in compliance with 201.15.4.2.1",
+    "Essential performance requirements 2 Sub clause 201.12.1.105 or generation of a visual and audible alarm in compliance with 201.15.4.2.1",
+    "See 16.9.2.1 b) for MULTIPLE SOCKET-OUTLETS integral with ME EQUIPMENT",
+    "Conductors in POWER SUPPLY CORDS intended to be connected to the neutral conductor of the supply system shall be coloured “light blue”",
     "Requirements and tests relating to this SINGLE FAULT CONDITION are found in 13.2.13 and 15.4.2 for overloading situations.",
+    "ME EQUIPMENT shall be so constructed that liquid that might escape in a SINGLE FAULT CONDITION does not result in an unacceptable RISK.",
+    "In addition to the RECORDS and documents required by ISO 14971, the documents produced from application of Clause 14 shall be maintained and shall form part of the RISK MANAGEMENT FILE.",
+    "The RISK MANAGEMENT plan required by 3.5 of ISO 14971 shall also include a reference to the PEMS VALIDATION plan (see 14.11).",
+    "A PEMS DEVELOPMENT LIFE-CYCLE shall be documented",
+    "When compiling the list of known or foreseeable HAZARDS, the MANUFACTURER shall consider those HAZARDS associated with software and hardware aspects of the PEMS including those associated with NETWORK/DATA COUPLING, components of third-party origin and legacy subsystems.",
+    "Suitably validated tools and PROCEDURES shall be selected and identified to implement each RISK CONTROL measure. These tools and PROCEDURES shall be appropriate to assure that each RISK CONTROL measure satisfactorily reduces the identified RISK(S).",
+    "For the PEMS and each of its subsystems (e.g. for a PESS) there shall be a documented requirement specification.",
+    "For the PEMS and each of its subsystems, an architecture shall be specified that shall satisfy the requirement specification.",
+    "VERIFICATION is required for all functions that implement BASIC SAFETY, ESSENTIAL PERFORMANCE or RISK CONTROL measures.",
+    "A PEMS VALIDATION plan shall include the validation of BASIC SAFETY and ESSENTIAL PERFORMANCE, and shall require checks for unintended functioning of the PEMS.",
+    "THERMAL CUT-OUTS and OVER-CURRENT RELEASES with automatic resetting shall not be used in ME EQUIPMENT if their use could result in a HAZARDOUS SITUATION by such resetting.",
+    "THERMAL CUT-OUTS with a safety function that have to be reset by a soldering operation that can affect the operating value shall not be fitted in ME EQUIPMENT",
     "Battery compartments of ME EQUIPMENT shall be designed to prevent accidental short circuiting of the battery where such short circuits could result in a HAZARDOUS SITUATION."
-  ];
-  const keteranganData2 = [
+];
+    const keteranganData2 = [
     "Essential Performance ",
-  ];
+    "Output connectors",
+    "Failure of THERMOSTATS",
+    "Leakage of liquid",
+    "Overload",
+    "PROGAMMABLE ELECTRICAL MEDICAL SYSTEMS (PEMS) ",
+    "General ",
+    "Documentation",
+    "RISK MANAGEMENT plan ",
+    "RISK DEVELOPMENT LIFE-CYCLE",
+    "RISK MANAGEMENT PROCESS",
+    "Requirement specification",
+    "Architecture ",
+    "VERIFICATION. ",
+    "PEMS VALIDATION ",
+    "Temperature and overload control devices ",
+];
 
   const handleInputChange1 = (
     rowIndex: number,
