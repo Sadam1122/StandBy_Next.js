@@ -1,8 +1,7 @@
 import React from 'react';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
-import foto from '../../assets/Foto.jpg';
-import Image from 'next/image';
+
 
 const AboutUs: React.FC = () => {
   return (
@@ -13,13 +12,12 @@ const AboutUs: React.FC = () => {
         <p className="text-lg text-center mb-10">
           Lorem kepsum terkesum kesum
           </p>
-        
+       
 
         <h2 className="text-3xl font-semibold text-center mb-6">Meet Our Team</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           <div className="bg-white shadow-md rounded-lg overflow-hidden">
-            <Image src={foto.src} alt="Team Member 1" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold">Suryo Adhi Wibowo</h3>
               <p className="text-gray-600">Supervising Lecturer</p>
@@ -30,7 +28,6 @@ const AboutUs: React.FC = () => {
           </div>
    
           <div className="bg-white shadow-md rounded-lg overflow-hidden">
-            <Image src={foto.src} alt="Team Member 1" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold">Sadam Al Rasyid</h3>
               <p className="text-gray-600">IoT and Backend Developer for StandBy</p>
@@ -42,7 +39,6 @@ const AboutUs: React.FC = () => {
 
       
           <div className="bg-white shadow-md rounded-lg overflow-hidden">
-            <Image src={foto.src} alt="Team Member 1" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold">Reynaldhi Tryana Graha</h3>
               <p className="text-gray-600">Mobile Application Developer for StandBy</p>
@@ -54,7 +50,6 @@ const AboutUs: React.FC = () => {
 
        
           <div className="bg-white shadow-md rounded-lg overflow-hidden">
-            <Image src={foto.src} alt="Team Member 1" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold">Fakhriadi Rasyaad</h3>
               <p className="text-gray-600">Frontend Developer for StandBy</p>
@@ -65,7 +60,6 @@ const AboutUs: React.FC = () => {
           </div>
 
           <div className="bg-white shadow-md rounded-lg overflow-hidden">
-           <Image src={foto.src} alt="Team Member 1" className="w-full h-48 object-cover" />
             <div className="p-6">
               <h3 className="text-xl font-semibold">Marshaniswah Syamsul </h3>
               <p className="text-gray-600">Artificial Intelligence Developer for StandBy</p>
@@ -75,7 +69,7 @@ const AboutUs: React.FC = () => {
             </div>
           </div>
         </div>
-        <div className="mt-20"> {/* Margin above the footer */}
+        <div className="mt-20">
         <Footer />
       </div>
       </div>
