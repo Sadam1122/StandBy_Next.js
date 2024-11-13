@@ -3,7 +3,6 @@ import Navbar from '../../components/navbar';
 import supabase from '../../components/SupabaseClient';
 import html2pdf from 'html2pdf.js';
 
-
 const HomePage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
