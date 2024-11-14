@@ -1,9 +1,10 @@
+// pages/home.tsx
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-
+// import Image from 'next/image';
 
 const ProfilPage = () => {
   const router = useRouter();
@@ -55,13 +56,11 @@ const ProfilPage = () => {
       <Navbar />
       <main className="flex flex-1 items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center max-w-md w-full">
-        <img
-          src={profile.avatar_url}
-          alt="Avatar"
-          width={144}
-          height={144}
-          className="rounded-full mb-4 object-cover border-2 border-gray-300"
-        />
+          <img
+            src={profile.avatar_url}
+            alt="Avatar"
+            className="w-36 h-36 rounded-full mb-4 object-cover border-2 border-gray-300"
+          />
           <h2 className="text-2xl font-bold mb-4 text-center">{profile.full_name}</h2>
           {error && <p className="text-red-500 mb-4">{error}</p>}
           <div className="flex flex-col space-y-2 w-full">
