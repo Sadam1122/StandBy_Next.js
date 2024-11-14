@@ -1,9 +1,10 @@
+// pages/home.tsx
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-
+// import Image from 'next/image';
 
 const ProfilPage = () => {
   const router = useRouter();

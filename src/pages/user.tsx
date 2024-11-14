@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import Image from 'next/image';
 
 
 type User = {
@@ -87,14 +86,12 @@ const UserPage = () => {
                   {users.map((user, index) => (
                     <tr key={index} className="hover:bg-gray-100 transition duration-200">
                       <td className="border px-4 py-2">
-                      {user.avatar_url ? (
-                        <Image
-                          src={user.avatar_url}
-                          alt="avatar"
-                          width={48}
-                          height={48}
-                          className="rounded-full"
-                      />
+                        {user.avatar_url ? (
+                          <img
+                            src={user.avatar_url}
+                            alt="avatar"
+                            className="w-12 h-12 rounded-full"
+                          />
                         ) : (
                           <span className="text-gray-500">No Avatar</span>
                         )}
@@ -111,18 +108,18 @@ const UserPage = () => {
           )}
         </div>
 
-      
+        {/* Admin button with Add User icon */}
         {isCurrentUserAdmin && (
           <div className="absolute top-4 right-4 flex items-center">
             <button
               onClick={handleAdminButtonClick}
-              className=" bg-red-500 hover:bg-red-800 text-white px-4  mx-1 py-2 rounded"
+              className="bg-blue-500 text-white px-4  mx-1 py-2 rounded"
             >
               <span className="text-base font-semibold">Tambahkan User</span>
             </button>
             <button
               onClick={handleAdminButtonClicks}
-              className=" bg-red-500 hover:bg-red-800 text-white px-4 mx-1 py-2 rounded"
+              className="bg-blue-500 text-white px-4 mx-1 py-2 rounded"
             >
               <span className="text-base font-semibold">Semua Dokumen</span>
             </button>
