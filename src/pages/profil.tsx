@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-// import Image from 'next/image';
 
 const ProfilPage = () => {
   const router = useRouter();
@@ -16,7 +15,7 @@ const ProfilPage = () => {
       const { data: { user }, error: userError } = await supabase.auth.getUser();
 
       if (userError || !user) {
-        router.push('/login'); 
+        router.push('/login'); // Redirect to login if not authenticated
       } else {
         const { data, error } = await supabase
           .from('profiles')
@@ -44,11 +43,11 @@ const ProfilPage = () => {
   };
 
   const handleSettings = () => {
-    router.push('/profil/setting'); 
+    router.push('/profil/setting'); // Redirect to settings page
   };
 
   const handleAboutUs = () => {
-    router.push('/profil/about'); 
+    router.push('/profil/about'); // Redirect to About Us page
   };
 
   return (
