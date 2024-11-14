@@ -4,7 +4,6 @@ import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
-import Image from 'next/image';
 
 const ProfilPage = () => {
   const router = useRouter();
@@ -16,7 +15,7 @@ const ProfilPage = () => {
       const { data: { user }, error: userError } = await supabase.auth.getUser();
 
       if (userError || !user) {
-        router.push('/login'); 
+        router.push('/login'); // Redirect to login if not authenticated
       } else {
         const { data, error } = await supabase
           .from('profiles')
@@ -44,11 +43,11 @@ const ProfilPage = () => {
   };
 
   const handleSettings = () => {
-    router.push('/profil/setting'); 
+    router.push('/profil/setting'); // Redirect to settings page
   };
 
   const handleAboutUs = () => {
-    router.push('/profil/about'); 
+    router.push('/profil/about'); // Redirect to About Us page
   };
 
   return (
@@ -56,11 +55,9 @@ const ProfilPage = () => {
       <Navbar />
       <main className="flex flex-1 items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center max-w-md w-full">
-          <Image
+          <img
             src={profile.avatar_url}
             alt="Avatar"
-            width={144}
-            height={144}
             className="w-36 h-36 rounded-full mb-4 object-cover border-2 border-gray-300"
           />
           <h2 className="text-2xl font-bold mb-4 text-center">{profile.full_name}</h2>
