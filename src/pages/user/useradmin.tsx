@@ -236,5 +236,4 @@ const CreateUserPage = () => {
     </div>
   );
 };
-
 export default CreateUserPage;
