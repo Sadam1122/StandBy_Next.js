@@ -113,13 +113,13 @@ const UserPage = () => {
           <div className="absolute top-4 right-4 flex items-center">
             <button
               onClick={handleAdminButtonClick}
-              className="bg-blue-500 text-white px-4  mx-1 py-2 rounded"
+              className=" bg-red-500 hover:bg-red-800 text-white px-4  mx-1 py-2 rounded"
             >
               <span className="text-base font-semibold">Tambahkan User</span>
             </button>
             <button
               onClick={handleAdminButtonClicks}
-              className="bg-blue-500 text-white px-4 mx-1 py-2 rounded"
+              className=" bg-red-500 hover:bg-red-800 text-white px-4 mx-1 py-2 rounded"
             >
               <span className="text-base font-semibold">Semua Dokumen</span>
             </button>
