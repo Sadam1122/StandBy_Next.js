@@ -153,13 +153,13 @@ const Esp32Dashboard: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Sensor Data</h3>
             <div className="flex space-x-4 mb-4">
               <button
-                className={`bg-blue-500 text-white px-4 py-2 rounded ${activeSource === 'esp32_1' ? 'font-bold' : ''}`}
+                className={` bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded ${activeSource === 'esp32_1' ? 'font-bold' : ''}`}
                 onClick={() => setActiveSource('esp32_1')}
               >
                 Source A (ESP32)
               </button>
               <button
-                className={`bg-blue-500 text-white px-4 py-2 rounded ${activeSource === 'esp32_duplicate' ? 'font-bold' : ''}`}
+                className={` bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded ${activeSource === 'esp32_duplicate' ? 'font-bold' : ''}`}
                 onClick={() => setActiveSource('esp32_duplicate')}
               >
                 Source B (ESP32 Duplicate)

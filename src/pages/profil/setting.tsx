@@ -5,7 +5,8 @@ import { useRouter } from 'next/navigation';
 import supabase from '../../components/SupabaseClient';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
-// import Image from 'next/image';
+import Image from 'next/image';
+
 
 const SettingsPage = () => {
   const [fullName, setFullName] = useState('');
@@ -17,7 +18,7 @@ const SettingsPage = () => {
   const [error, setError] = useState('');
   const router = useRouter();
 
-  // Check if the user is logged in and fetch their profile
+ 
   useEffect(() => {
     const fetchUserProfile = async () => {
       const { data: { user }, error } = await supabase.auth.getUser();
@@ -121,12 +122,14 @@ const SettingsPage = () => {
         
         {/* Avatar */}
         {avatar && (
-          <img
+          <Image
             src={avatar} 
             alt="Avatar" 
-            className="h-36 w-36 rounded-full mb-6 border-2 border-gray-300 shadow-md" 
+            width={144} 
+            height={144} 
+            className="rounded-full mb-6 border-2 border-gray-300 shadow-md"
           />
-        )}
+          )}
 
         <div className="bg-white shadow-lg rounded-lg p-6 w-full max-w-lg">
           {/* Name */}

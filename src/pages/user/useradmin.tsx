@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import supabase from '../../components/SupabaseClient';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
+import Image from 'next/image';
 
 type User = {
   id: string;
@@ -216,7 +217,13 @@ const CreateUserPage = () => {
               {users.map((user) => (
                 <tr key={user.id}>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <img src={user.avatar_url} alt="Avatar" className="h-10 w-10 rounded-full" />
+                  <Image
+                      src={user.avatar_url}
+                      alt="Avatar"
+                      width={40}
+                      height={40}
+                      className="rounded-full"
+                    />
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">{user.full_name}</td>
                   <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>

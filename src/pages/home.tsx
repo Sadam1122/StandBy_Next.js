@@ -17,9 +17,9 @@ const HomePage: React.FC = () => {
       <DisplayPDFs />
       <button
         onClick={dokumen}
-        className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 mb-10"
+        className="px-4 py-2  bg-red-500 hover:bg-red-800 text-white font-semibold rounded  mb-10"
       >
-        Pergi Ke Halaman Dokumen Test Report
+        Pergi Ke Halaman Dokument Test Report
       </button>
     </div>
   );
