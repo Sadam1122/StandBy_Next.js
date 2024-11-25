@@ -23,7 +23,7 @@ interface SensorData {
 
 const Esp32Dashboard: React.FC = () => {
   const [data, setData] = useState<SensorData[]>([]);
-  const [activeSource, setActiveSource] = useState<'esp32_1' | 'esp32_duplicate'>('esp32_1');
+  const [activeSource, setActiveSource] = useState<'esp32_1' | 'esp32_2'>('esp32_1');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -39,7 +39,7 @@ const Esp32Dashboard: React.FC = () => {
         if (esp32Error) throw esp32Error;
 
         const { data: esp32DuplicateData, error: esp32DuplicateError } = await supabase
-          .from('esp32_duplicate')
+          .from('esp32_2')
           .select('*')
           .order('created_at', { ascending: true });
 
@@ -159,8 +159,8 @@ const Esp32Dashboard: React.FC = () => {
                 Source A (ESP32)
               </button>
               <button
-                className={` bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded ${activeSource === 'esp32_duplicate' ? 'font-bold' : ''}`}
-                onClick={() => setActiveSource('esp32_duplicate')}
+                className={` bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded ${activeSource === 'esp32_2' ? 'font-bold' : ''}`}
+                onClick={() => setActiveSource('esp32_2')}
               >
                 Source B (ESP32 Duplicate)
               </button>
