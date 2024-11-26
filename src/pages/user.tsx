@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
-import Footer from '../components/footer';
 
 
 type User = {
@@ -126,9 +125,7 @@ const UserPage = () => {
           </div>
         )}
         
-        <div className="mt-20"> {/* Margin above the footer */}
-          <Footer />
-        </div>
+       
       </div>
     </div>
   );
