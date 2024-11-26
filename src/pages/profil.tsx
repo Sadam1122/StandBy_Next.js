@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
-import Footer from '../components/footer';
+
 
 const ProfilPage = () => {
   const router = useRouter();
@@ -84,7 +84,6 @@ const ProfilPage = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };
