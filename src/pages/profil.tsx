@@ -56,8 +56,6 @@ const ProfilPage = () => {
           <img
             src={profile.avatar_url}
             alt="Avatar"
-            width={144}
-            height={144}
             className="w-36 h-36 rounded-full mb-4 object-cover border-2 border-gray-300"
           />
           <h2 className="text-2xl font-bold mb-4 text-center">{profile.full_name}</h2>
