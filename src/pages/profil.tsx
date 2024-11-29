@@ -1,9 +1,7 @@
-// pages/home.tsx
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
-import Image from 'next/image';
 
 const ProfilPage = () => {
   const router = useRouter();
@@ -55,7 +53,7 @@ const ProfilPage = () => {
       <Navbar />
       <main className="flex flex-1 items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-lg p-8 flex flex-col items-center max-w-md w-full">
-          <Image
+          <img
             src={profile.avatar_url}
             alt="Avatar"
             width={144}
