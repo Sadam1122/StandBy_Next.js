@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../../components/SupabaseClient';
 import Navbar from '../../components/navbar';
-import Image from 'next/image';
 
 
 const SettingsPage = () => {
@@ -121,7 +120,7 @@ const SettingsPage = () => {
         
         {/* Avatar */}
         {avatar && (
-          <Image
+          <img
             src={avatar} 
             alt="Avatar" 
             width={144}
