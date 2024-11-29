@@ -89,7 +89,7 @@ const UserPage = () => {
                 <tr key={index} className="hover:bg-gray-100 transition duration-200">
                   <td className="border px-4 py-2">
                     {user.avatar_url ? (
-                      <Image
+                      <img
                         src={user.avatar_url}
                         alt="avatar"
                         width={40}
