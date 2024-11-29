@@ -4,8 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
-import Footer from '../components/footer';
-
+import Image from 'next/image';
 
 type User = {
   id: string;
@@ -16,7 +15,7 @@ type User = {
 };
 
 const UserPage = () => {
-  const [users, setUsers] = useState<User[]>([]); // Gunakan tipe User
+  const [users, setUsers] = useState<User[]>([]); 
   const [error, setError] = useState('');
   const [isCurrentUserAdmin, setIsCurrentUserAdmin] = useState(false);
   const router = useRouter();
@@ -35,7 +34,7 @@ const UserPage = () => {
           .single();
 
         if (data && data.is_admin !== undefined) {
-          setIsCurrentUserAdmin(data.is_admin); // Cek data sebelum akses
+          setIsCurrentUserAdmin(data.is_admin); 
         }
       }
     };
@@ -59,77 +58,72 @@ const UserPage = () => {
   const handleAdminButtonClick = () => {
     router.push('/user/useradmin');
   };
-  const handleAdminButtonClicks = () => {
-    router.push('/user/dokument');
-  };
+  
 
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <div className="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8 lg:p-12 relative mt-24 pt-10"> 
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">Daftar User</h1>
-        {error && <p className="text-red-500 mb-4">{error}</p>}
+  <Navbar />
+  <div className="flex flex-col items-center justify-start min-h-screen p-4 sm:p-8 lg:p-12 relative mt-4 pt-2 pb-8">
+    <h1 className="text-3xl font-bold mb-4 text-gray-800">Daftar User</h1>
+    {error && <p className="text-red-500 mb-4">{error}</p>}
 
-        <div className="mt-8 w-full max-w-6xl">
-          {users.length > 0 ? (
-            <div className="overflow-x-auto shadow-md rounded-lg border border-black">
-              <table className="table-auto w-full bg-white">
-                <thead className="bg-gray-100">
-                  <tr>
-                    <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Avatar</th>
-                    <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Full Name</th>
-                    <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">Email</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {users.map((user, index) => (
-                    <tr key={index} className="hover:bg-gray-100 transition duration-200">
-                      <td className="border px-4 py-2">
-                      {user.avatar_url ? (
-                          <img
-                            src={user.avatar_url}
-                            alt="avatar"
-                            className="w-12 h-12 rounded-full"
-                          />
-                        ) : (
-                          <span className="text-gray-500">No Avatar</span>
-                        )}
-                      </td>
-                      <td className="border px-4 py-2">{user.full_name}</td>
-                      <td className="border px-4 py-2">{user.email}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <p className="text-gray-600">Tidak ada pengguna</p>
-          )}
+    <div className="mt-6 w-full max-w-6xl">
+      {users.length > 0 ? (
+        <div className="overflow-x-auto shadow-md rounded-lg border border-black">
+          <table className="table-auto w-full bg-white">
+            <thead className="bg-gray-100">
+              <tr>
+                <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
+                  Avatar
+                </th>
+                <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
+                  Full Name
+                </th>
+                <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
+                  Email
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user, index) => (
+                <tr key={index} className="hover:bg-gray-100 transition duration-200">
+                  <td className="border px-4 py-2">
+                    {user.avatar_url ? (
+                      <Image
+                        src={user.avatar_url}
+                        alt="avatar"
+                        width={40}
+                        height={40}
+                        className="w-12 h-12 rounded-full object-cover border-2 border-gray-300"
+                      />
+                    ) : (
+                      <span className="text-gray-500">No Avatar</span>
+                    )}
+                  </td>
+                  <td className="border px-4 py-2">{user.full_name}</td>
+                  <td className="border px-4 py-2">{user.email}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-
-        {isCurrentUserAdmin && (
+      ) : (
+        <p className="text-gray-600">Tidak ada pengguna</p>
+      )}
+    </div>
+    {isCurrentUserAdmin && (
           <div className="absolute top-4 right-4 flex items-center">
-           <button
+            <button
               onClick={handleAdminButtonClick}
-              className=" bg-red-500 hover:bg-red-800 text-white px-4  mx-1 py-2 rounded"
+              className="bg-red-500 hover:bg-red-800 text-white px-4 mx-4 py-2 rounded"
             >
               <span className="text-base font-semibold">Tambahkan User</span>
             </button>
-            <button
-              onClick={handleAdminButtonClicks}
-              className=" bg-red-500 hover:bg-red-800 text-white px-4 mx-1 py-2 rounded"
-            >
-              <span className="text-base font-semibold">Semua Dokumen</span>
-            </button>
           </div>
         )}
-        
-        <div className="mt-20"> 
-          <Footer />
-        </div>
-      </div>
-    </div>
+  </div>
+</div>
+
   );
 };
 

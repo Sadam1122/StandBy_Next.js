@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../../components/SupabaseClient';
 import Navbar from '../../components/navbar';
-import Footer from '../../components/footer';
 import Image from 'next/image';
 
 
@@ -125,9 +124,9 @@ const SettingsPage = () => {
           <Image
             src={avatar} 
             alt="Avatar" 
-            width={144} 
-            height={144} 
-            className="rounded-full mb-6 border-2 border-gray-300 shadow-md"
+            width={144}
+            height={144}
+            className="w-36 h-36 rounded-full mb-4 object-cover border-2 border-gray-300"
           />
           )}
 
@@ -172,9 +171,7 @@ const SettingsPage = () => {
             </button>
           </div>
         </div>
-        <div className="mt-20"> {/* Margin above the footer */}
-        <Footer />
-      </div>
+       
       </div>
     </div>
   );

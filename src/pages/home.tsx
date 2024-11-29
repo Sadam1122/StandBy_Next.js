@@ -10,17 +10,30 @@ const HomePage: React.FC = () => {
     router.push('/home/dokumen');
   };
 
+  const handleAdminButtonClicks = () => {
+    router.push('/home/dokument');
+  };
+
   return (
     <div className="flex flex-col min-h-screen bg-gray-100">
       <Navbar />
       <Botpress />
       <DisplayPDFs />
-      <button
-        onClick={dokumen}
-        className="px-4 py-2  bg-red-500 hover:bg-red-800 text-white font-semibold rounded  mb-10"
-      >
-        Pergi Ke Halaman Dokument Test Report
-      </button>
+      <div className="flex space-x-4 justify-center items-center mb-10">
+        <button
+          onClick={dokumen}
+          className="px-3 py-1 bg-red-500 hover:bg-red-800 text-white font-semibold rounded">
+          Pergi Ke Halaman Dokument Test Report
+        </button>
+        <button
+          onClick={handleAdminButtonClicks}
+          className="px-3 py-1 bg-red-500 hover:bg-red-800 text-white font-semibold rounded">
+          <span className="text-sm font-semibold">Semua Dokumen</span>
+        </button>
+      </div>
+
+
+
     </div>
   );
 };
