@@ -125,7 +125,7 @@ const ReportSection: React.FC = () => {
 
      
       <div>
-        <h2 className="font-bold">I.2. <span className="font-semibold">PRTPS - BRIN staff involved in the test</span></h2>
+        <h2 className="font-bold print-dokumen ">I.2. <span className="font-semibold">PRTPS - BRIN staff involved in the test</span></h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2">
           {staff.map((member, index) => (
             <div key={index} className="flex items-center">

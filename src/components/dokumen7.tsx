@@ -36,8 +36,8 @@ const TestEquipmentSection: React.FC = () => {
         </tbody>
       </table>
 
-      {/* Section II.1.2 - Test Program */}
-      <h3 className="font-bold text-lg">II.1.2. Test Program</h3>
+    
+      <h3 className="font-bold text-lg print-dokumen">II.1.2. Test Program</h3>
       <p>
         The Test Program is in accordance with the following document:
         <br />

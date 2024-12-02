@@ -23,7 +23,7 @@ const TestReport: React.FC = () => {
   return (
     <div className="text-center p-6 max-w-screen-md mx-auto font-sans space-y-6">
       {/* Title Section */}
-      <h1 className="text-3xl font-bold tracking-widest">TEST REPORT</h1>
+      <h1 className="text-3xl font-bold tracking-widest print-dokumen mt-[100px]">TEST REPORT</h1>
       <div>
         <input
           type="text"

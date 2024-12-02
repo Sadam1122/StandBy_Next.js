@@ -20,6 +20,17 @@ body {
 
 
 @media print {
+  /* .print-header {
+    position: fixed;
+    width: 100%;
+    background: white;
+    z-index: 1000; 
+    border-bottom: 1px solid #ccc; 
+    } */
+  .print-dokumen{
+    page-break-before: always; 
+    /* margin-top: 100px; */
+  }
   body * {
     visibility: hidden;
   }
@@ -33,3 +44,4 @@ body {
     width: 100%;
   }
 }
+

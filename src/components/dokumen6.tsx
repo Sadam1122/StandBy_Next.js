@@ -38,8 +38,7 @@ const TestReportSection: React.FC = () => {
 
   return (
     <div className="text-left p-6 max-w-screen-lg mx-auto font-sans space-y-8">
-      {/* Unit Under Test Description */}
-      <h3 className="font-bold text-lg">Unit Under Test Description</h3>
+      <h3 className="font-bold text-lg print-dokumen">Unit Under Test Description</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-y-2 mt-2">
         <span>Part Name</span>
         <input
@@ -97,12 +96,11 @@ const TestReportSection: React.FC = () => {
         />
       </div>
 
-      {/* Test Lab. Findings */}
-      <h3 className="font-bold text-lg">Test Lab. Findings</h3>
+      <h3 className="font-bold text-lg print-dokumen">Test Lab. Findings</h3>
       <p>There were no abnormalities after test</p>
       {executors.map((executor, index) => (
         <div key={index} className="border p-3 mb-2 rounded-lg">
-          <p className="font-semibold">Test Executor</p>
+          <p className="font-semibold ">Test Executor</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-y-2 mt-2">
             <span>Name:</span>
             <input
@@ -128,8 +126,8 @@ const TestReportSection: React.FC = () => {
         </div>
       ))}
 
-      {/* Conclusion */}
-      <h3 className="font-bold text-lg">Conclusion</h3>
+
+      <h3 className="font-bold text-lg print-dokumen">Conclusion</h3>
       <p>
         The test is in conformity with test criteria in IEC 60601-2-19: 2009 ed. 2 and IEC 60601-1:2005
       </p>

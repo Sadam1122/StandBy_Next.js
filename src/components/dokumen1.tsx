@@ -149,7 +149,7 @@ const Dokumen1: React.FC = () => {
             </div>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto print-dokumen">
             <table className="min-w-full table-auto border-collapse border border-gray-300 bg-white shadow-lg rounded">
               <thead className="bg-gray-200">
                 <tr>
@@ -194,7 +194,7 @@ const Dokumen1: React.FC = () => {
             </table>
           </div>
 
-          <div className="overflow-x-auto mt-4">
+          <div className="overflow-x-auto mt-4 print-dokumen">
             <table className="min-w-full table-auto border-collapse border border-gray-300 bg-white shadow-lg rounded">
               <thead className="bg-gray-200">
                 <tr>

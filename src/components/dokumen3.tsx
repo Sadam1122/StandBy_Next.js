@@ -170,8 +170,8 @@ const ReportDetails: React.FC = () => {
       </p>
 
 
-      <div className="text-center font-sans p-6">
-        <h1 className="text-xl font-bold mb-4">CONTENT</h1>
+      <div className="text-center font-sans p-6 print-dokumen3" >
+        <h1 className="text-xl font-bold mb-4 print-dokumen">CONTENT</h1>
         <div className="text-left text-base font-semibold leading-relaxed space-y-2">
           <p>I. GENERAL PART</p>
           <div className="pl-6">
