@@ -31,55 +31,57 @@ interface SensorDataEsp32_2 {
 const CombinedDashboard: React.FC = () => {
   const [dataEsp32_1, setDataEsp32_1] = useState<SensorDataEsp32_1[]>([]);
   const [dataEsp32_2, setDataEsp32_2] = useState<SensorDataEsp32_2[]>([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        // Fetch data for ESP32_1
-        const { data: esp32_1_data, error: esp32_1_error } = await supabase
-          .from('esp32_1')
-          .select('*')
-          .order('created_at', { ascending: true });
+  const fetchData = async () => {
+    try {
+      // Fetch data for ESP32_1
+      const { data: esp32_1_data, error: esp32_1_error } = await supabase
+        .from('esp32_1')
+        .select('*')
+        .order('created_at', { ascending: true });
 
-        if (esp32_1_error) throw esp32_1_error;
+      if (esp32_1_error) throw esp32_1_error;
 
-        setDataEsp32_1(esp32_1_data as SensorDataEsp32_1[]);
+      setDataEsp32_1(esp32_1_data as SensorDataEsp32_1[]);
 
-        // Fetch data for ESP32_2
-        const { data: esp32_2_data, error: esp32_2_error } = await supabase
-          .from('esp32_2')
-          .select('*')
-          .order('created_at', { ascending: true });
+      // Fetch data for ESP32_2
+      const { data: esp32_2_data, error: esp32_2_error } = await supabase
+        .from('esp32_2')
+        .select('*')
+        .order('created_at', { ascending: true });
 
-        if (esp32_2_error) throw esp32_2_error;
+      if (esp32_2_error) throw esp32_2_error;
 
-        setDataEsp32_2(esp32_2_data as SensorDataEsp32_2[]);
-      } catch (err) {
-        if (err instanceof Error) {
-          console.error('Error fetching data:', err.message);
-          setError(err.message);
-        } else {
-          console.error('Unexpected error:', err);
-          setError('Unexpected error occurred.');
-        }
-      } finally {
-        setLoading(false);
+      setDataEsp32_2(esp32_2_data as SensorDataEsp32_2[]);
+    } catch (err) {
+      if (err instanceof Error) {
+        console.error('Error fetching data:', err.message);
+        setError(err.message);
+      } else {
+        console.error('Unexpected error:', err);
+        setError('Unexpected error occurred.');
       }
-    };
+    }
+  };
 
+  useEffect(() => {
+    // Initial fetch
     fetchData();
-  }, []);
 
-  if (loading) return <div className="text-center py-10">Loading...</div>;
-  if (error) return <div className="text-center text-red-500 py-10">{error}</div>;
+    // Set interval to fetch data every 1 second (1000 ms)
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 1000);
+
+    // Cleanup the interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
 
   const latestDataEsp32_1 = dataEsp32_1.length > 0 ? dataEsp32_1[dataEsp32_1.length - 1] : null;
   const latestDataEsp32_2 = dataEsp32_2.length > 0 ? dataEsp32_2[dataEsp32_2.length - 1] : null;
 
-  
+  if (error) return <div className="text-center text-red-500 py-10">{error}</div>;
 
   return (
     <div className="flex flex-col min-h-screen">
