@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import logo from '../assets/standbyputih.png'; 
+import logo from '../assets/standbyputih.png';
 import koran from '../assets/koran.png';
 import show from '../assets/show.png';
 import hide from '../assets/hide.png';
@@ -16,7 +16,7 @@ const LoginPage: React.FC = () => {
   const router = useRouter();
 
   const handleLogin = async () => {
-    setError('');
+    setError(''); 
     try {
       const res = await fetch('/api/login', {
         method: 'POST',
@@ -27,19 +27,14 @@ const LoginPage: React.FC = () => {
       if (!res.ok) {
         const result = await res.json() as { error?: string };
         setError(result.error ?? 'Login failed');
-        
-
-        window.location.reload();
-        return;
+        return; 
       }
 
       router.push('/home');
     } catch (err) {
-      console.error(err); 
+      console.error(err);
       setError('Terjadi kesalahan, coba lagi.');
-      window.location.reload();
     }
-    
   };
 
   const togglePasswordVisibility = () => {
@@ -95,6 +90,6 @@ const LoginPage: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default LoginPage;
