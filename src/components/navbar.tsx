@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../assets/standby.png'; 
 import Image from 'next/image';
-import Link from 'next/link'; 
+
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false); 
@@ -38,8 +38,8 @@ const Navbar: React.FC = () => {
         <li className="text-white text-center cursor-pointer" onClick={() => handleRefreshNav('/monitor')}>
           Monitor
         </li>
-        <li className="text-white text-center">
-          <Link href="/home">Dokumen</Link>
+        <li className="text-white text-center cursor-pointer" onClick={() => handleRefreshNav('/home')}>
+          Dokumen
         </li>
         <li className="text-white text-center cursor-pointer" onClick={() => handleRefreshNav('/user')}>
           User
