@@ -1,47 +1,55 @@
 "use client";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import supabase from '../components/SupabaseClient';
 import Image from 'next/image';
-import logo from '../assets/standbyputih.png';
+import logo from '../assets/standby.png';
 import koran from '../assets/koran.png';
 import show from '../assets/show.png';
 import hide from '../assets/hide.png';
 
-const LoginPage: React.FC = () => {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
-  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);  
   const router = useRouter();
 
-  const handleLogin = async () => {
-    console.log('Login button clicked'); 
-    setError('');
-    try {
-      const res = await fetch('/api/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
-      });
-  
-      if (!res.ok) {
-        const result = await res.json() as { error?: string };
-        setError(result.error ?? 'Login failed');
-        return;
+ 
+  useEffect(() => {
+    const checkUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+
+      if (user) {
+        router.push('/home'); 
       }
-  
-      const result = await res.json();
-      localStorage.setItem('authToken', result.token); 
-  
-      
+    };
+
+    checkUser();
+  }, [router]);
+
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      setError("Email dan Password tidak boleh kosong");
+      return;  
+    }
+
+    setError(''); 
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+
+    if (error) {
+      setError(error.message); 
+    } else {
+      const { data: { session } } = await supabase.auth.getSession();
+      document.cookie = `token=${session?.access_token}; path=/;`; 
       router.push('/home');
-    } catch (err) {
-      console.error(err);
-      setError('Terjadi kesalahan, coba lagi.');
     }
   };
-  
-  
+
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -58,13 +66,14 @@ const LoginPage: React.FC = () => {
       <div className="w-1/2 flex items-center justify-center bg-[#F7F7F7]">
         <div className="bg-white p-6 rounded shadow-md w-80">
           <h2 className="text-black text-lg font-semibold mb-4">Masuk Akun</h2>
-          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+          {error && <p className="text-red-500 text-center mb-4">{error}</p>}  
           <input
-            type="text"
-            placeholder="Masukkan nama Anda"
+            type="email"  
+            placeholder="Masukkan email Anda"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="border border-gray-300 rounded-lg p-3 mb-4 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 text-black"
+            required
           />
           <div className="relative mb-4">
             <input
@@ -73,6 +82,7 @@ const LoginPage: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 text-black"
+              required
             />
             <button
               onClick={togglePasswordVisibility}
