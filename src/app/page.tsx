@@ -17,26 +17,31 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = async () => {
     console.log('Login button clicked'); // Debug log
-    setError(''); 
+    setError('');
     try {
       const res = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, password }),
       });
   
       if (!res.ok) {
         const result = await res.json() as { error?: string };
         setError(result.error ?? 'Login failed');
-        return; 
+        return;
       }
   
+      const result = await res.json();
+      localStorage.setItem('authToken', result.token); 
+  
+      
       router.push('/home');
     } catch (err) {
       console.error(err);
       setError('Terjadi kesalahan, coba lagi.');
     }
   };
+  
   
 
   const togglePasswordVisibility = () => {
@@ -68,7 +73,7 @@ const LoginPage: React.FC = () => {
               placeholder="Masukkan kata sandi Anda"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 text-blacky"
+              className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 text-black"
             />
             <button
               onClick={togglePasswordVisibility}
