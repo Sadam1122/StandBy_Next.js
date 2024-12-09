@@ -1,7 +1,6 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import supabase from '../components/SupabaseClient';
 import Image from 'next/image';
 import logo from '../assets/standbyputih.png';
 import koran from '../assets/koran.png';
@@ -14,19 +13,6 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);  
   const router = useRouter();
- 
-  useEffect(() => {
-    const checkUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-
-      if (user) {
-        router.push('/home'); 
-      }
-    };
-
-    checkUser();
-  }, [router]);
-
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -34,21 +20,29 @@ const LoginPage = () => {
       return;  
     }
 
-    setError(''); 
-    const { error } = await supabase.auth.signInWithPassword({
-      email,
-      password,
-    });
+    setError('');
+    
+    try {
+      const response = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-    if (error) {
-      setError(error.message); 
-    } else {
-      const { data: { session } } = await supabase.auth.getSession();
-      document.cookie = `token=${session?.access_token}; path=/;`; 
-      router.push('/home');
+      const data = await response.json();
+
+      if (response.ok) {
+        router.push('/home'); // Redirect ke halaman home setelah login berhasil
+      } else {
+        setError(data.error || "Login gagal. Silakan periksa kembali email atau password Anda.");
+      }
+    } catch (err) {
+      console.error('Login error:', err); // Mencatat error ke console untuk debugging
+      setError("Terjadi kesalahan, coba lagi nanti.");
     }
   };
-
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
