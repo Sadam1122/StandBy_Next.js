@@ -58,7 +58,7 @@ const LoginPage: React.FC = () => {
             placeholder="Masukkan nama Anda"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="border border-gray-300 rounded-lg p-3 mb-4 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300"
+            className="border border-gray-300 rounded-lg p-3 mb-4 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 text-black"
           />
           <div className="relative mb-4">
             <input
@@ -66,7 +66,7 @@ const LoginPage: React.FC = () => {
               placeholder="Masukkan kata sandi Anda"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300"
+              className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 text-black"
             />
             <button
               onClick={togglePasswordVisibility}
