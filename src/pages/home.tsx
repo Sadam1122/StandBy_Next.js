@@ -2,9 +2,18 @@ import Navbar from '../components/navbar';
 import Botpress from '../components/botpress';
 import DisplayPDFs from '../components/displaypdf';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 const HomePage: React.FC = () => {
-  const router = useRouter(); 
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem('authToken');
+
+    if (!token) {
+      router.push('/login');
+    }
+  }, [router]);
 
   const dokumen = () => {
     router.push('/home/dokumen');
