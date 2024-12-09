@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Image from 'next/image';
-import logo from '../assets/standby.png';
+import logo from '../assets/standbyputih.png';
 import koran from '../assets/koran.png';
 import show from '../assets/show.png';
 import hide from '../assets/hide.png';
