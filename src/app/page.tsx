@@ -16,6 +16,7 @@ const LoginPage: React.FC = () => {
   const router = useRouter();
 
   const handleLogin = async () => {
+    console.log('Login button clicked'); // Debug log
     setError(''); 
     try {
       const res = await fetch('/api/login', {
@@ -23,19 +24,20 @@ const LoginPage: React.FC = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-
+  
       if (!res.ok) {
         const result = await res.json() as { error?: string };
         setError(result.error ?? 'Login failed');
         return; 
       }
-
+  
       router.push('/home');
     } catch (err) {
       console.error(err);
       setError('Terjadi kesalahan, coba lagi.');
     }
   };
+  
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
@@ -66,7 +68,7 @@ const LoginPage: React.FC = () => {
               placeholder="Masukkan kata sandi Anda"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 text-black"
+              className="border border-gray-300 rounded-lg p-3 w-full focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-300 text-blacky"
             />
             <button
               onClick={togglePasswordVisibility}
