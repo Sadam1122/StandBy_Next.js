@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -16,7 +15,7 @@ const LoginPage: React.FC = () => {
   const router = useRouter();
 
   const handleLogin = async () => {
-    console.log('Login button clicked'); // Debug log
+    console.log('Login button clicked'); 
     setError('');
     try {
       const res = await fetch('/api/login', {
