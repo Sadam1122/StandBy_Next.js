@@ -87,6 +87,7 @@ const LoginPage: React.FC = () => {
               )}
             </button>
           </div>
+       
           <button
             onClick={handleLogin}
             className="bg-[#991b1b] text-white rounded-lg p-3 w-full hover:bg-red-700 transition duration-300"
