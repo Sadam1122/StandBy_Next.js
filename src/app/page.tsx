@@ -14,7 +14,6 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);  
   const router = useRouter();
-
  
   useEffect(() => {
     const checkUser = async () => {
