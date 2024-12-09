@@ -7,26 +7,25 @@ const Botpress: React.FC = () => {
   useEffect(() => {
     const loadBotpress = () => {
       const script = document.createElement('script');
-      script.src = "https://cdn.botpress.cloud/webchat/v2.1/inject.js";
+      script.src = "https://cdn.botpress.cloud/webchat/v2.2/inject.js";
       script.async = true;
       document.body.appendChild(script);
-
       const configScript = document.createElement('script');
-      configScript.src = "https://mediafiles.botpress.cloud/abf73d59-de68-4f12-993a-aafd25b94f9a/webchat/v2.1/config.js";
+      configScript.src = "https://files.bpcontent.cloud/2024/10/03/01/20241003014651-SMMMGG71.js";
       configScript.async = true;
       document.body.appendChild(configScript);
     };
 
-
+ 
     if (router.pathname === '/home' || router.pathname === '/monitor') {
       loadBotpress();
     }
 
     return () => {
-      const scripts = document.querySelectorAll('script[src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"], script[src="https://mediafiles.botpress.cloud/abf73d59-de68-4f12-993a-aafd25b94f9a/webchat/v2.1/config.js"]');
+      const scripts = document.querySelectorAll('script[src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"], script[src="https://files.bpcontent.cloud/2024/10/03/01/20241003014651-SMMMGG71.js"]');
       scripts.forEach(script => script.remove());
     };
-  }, [router.pathname]);
+  }, [router.pathname]); 
 
   return null; 
 };
