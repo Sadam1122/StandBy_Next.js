@@ -37,7 +37,7 @@ const ProfilPage = () => {
 
   const handleLogout = () => {
     document.cookie = 'token=; Max-Age=0; path=/;';
-    router.push('/login');
+    router.push('/');
   };
 
   const handleSettings = () => {
