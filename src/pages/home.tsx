@@ -6,7 +6,6 @@ import { useEffect } from 'react';
 
 const HomePage: React.FC = () => {
   const router = useRouter();
-
   useEffect(() => {
     const token = localStorage.getItem('authToken');
 
