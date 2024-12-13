@@ -30,14 +30,20 @@ const LoginPage = () => {
         },
         body: JSON.stringify({ email, password }),
       });
-
+      
+      if (!response.ok) {
+        console.error('Login failed:', response.status, await response.text()); // Menampilkan pesan error dari server
+        setError("Login gagal. Silakan coba lagi nanti.");
+        return;
+      }
+      
       const data = await response.json();
-
       if (response.ok) {
         router.push('/home'); // Redirect ke halaman home setelah login berhasil
       } else {
         setError(data.error || "Login gagal. Silakan periksa kembali email atau password Anda.");
       }
+      
     } catch (err) {
       console.error('Login error:', err); // Mencatat error ke console untuk debugging
       setError("Terjadi kesalahan, coba lagi nanti.");
