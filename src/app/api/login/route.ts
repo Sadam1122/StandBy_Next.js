@@ -10,6 +10,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: error.message }, { status: 400 })
   }
 
+  
   const response = NextResponse.json({ success: true })
   response.cookies.set('token', session?.access_token ?? '', { path: '/home' })
   return response
