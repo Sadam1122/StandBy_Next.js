@@ -15,7 +15,6 @@ const LoginPage = () => {
   const router = useRouter();
 
   const handleLogin = async () => {
-  setError('');
   try {
     const res = await fetch('/api/login', {
       method: 'POST',
@@ -24,20 +23,18 @@ const LoginPage = () => {
     });
 
     if (!res.ok) {
-      const result = await res.json();
-      setError(result.error ?? 'Login failed');
+      const { error } = await res.json();
+      setError(error || 'Login failed');
       return;
     }
 
-    const result = await res.json();
-    console.log('Login successful, result:', result); // Debug log
-    localStorage.setItem('authToken', result.token); 
     router.push('/home');
   } catch (err) {
-    console.error(err);
-    setError('Terjadi kesalahan, coba lagi.');
+    console.error('Error during login:', err);
+    setError('Terjadi kesalahan. Coba lagi.');
   }
 };
+
 
 
   const togglePasswordVisibility = () => {
