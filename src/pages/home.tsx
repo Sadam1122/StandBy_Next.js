@@ -10,7 +10,7 @@ const HomePage: React.FC = () => {
     const token = localStorage.getItem('authToken');
 
     if (!token) {
-      router.push('/login');
+      router.push('/');
     }
   }, [router]);
 
