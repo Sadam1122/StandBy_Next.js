@@ -15,27 +15,40 @@ const LoginPage = () => {
   const router = useRouter();
 
   const handleLogin = async () => {
-  try {
-    const res = await fetch('/api/login/route', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (!res.ok) {
-      const { error } = await res.json();
-      setError(error || 'Login failed');
-      return;
+    if (!email || !password) {
+      setError("Email dan Password tidak boleh kosong");
+      return;  
     }
 
-    router.push('/home');
-  } catch (err) {
-    console.error('Error during login:', err);
-    setError('Terjadi kesalahan. Coba lagi.');
-  }
-};
-
-
+    setError('');
+    
+    try {
+      const response = await fetch('/api/login/route', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      
+      if (!response.ok) {
+        console.error('Login failed:', response.status, await response.text()); // Menampilkan pesan error dari server
+        setError("Login gagal. Silakan coba lagi nanti.");
+        return;
+      }
+      
+      const data = await response.json();
+      if (response.ok) {
+        router.push('/home'); // Redirect ke halaman home setelah login berhasil
+      } else {
+        setError(data.error || "Login gagal. Silakan periksa kembali email atau password Anda.");
+      }
+      
+    } catch (err) {
+      console.error('Login error:', err); // Mencatat error ke console untuk debugging
+      setError("Terjadi kesalahan, coba lagi nanti.");
+    }
+  };
 
   const togglePasswordVisibility = () => {
     setIsPasswordVisible(!isPasswordVisible);
