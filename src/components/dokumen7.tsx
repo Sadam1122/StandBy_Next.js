@@ -5,36 +5,49 @@ const TestEquipmentSection: React.FC = () => {
     <div className="text-left p-6 max-w-screen-lg mx-auto font-sans space-y-6">
       {/* Section II.1.1 - Test Equipment Used */}
       <h3 className="font-bold text-lg">II.1.1. Test Equipment Used</h3>
-      <table className="min-w-full border-collapse border border-gray-400">
-        <thead>
-          <tr>
-            <th className="border border-gray-400 p-2">Test Item<br/>(1)</th>
-            <th className="border border-gray-400 p-2">Test Equipment<br/>(2)</th>
-            <th className="border border-gray-400 p-2">Specification<br/>(3)</th>
-            <th className="border border-gray-400 p-2">Qty</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="border border-gray-400 p-2">Conditions for application to ME Equipment or ME Systems</td>
-            <td className="border border-gray-400 p-2">Hybrid Recorder</td>
-            <td className="border border-gray-400 p-2">-50 °C – 200 °C</td>
-            <td className="border border-gray-400 p-2">1</td>
-          </tr>
-          <tr>
-            <td className="border border-gray-400 p-2"></td>
-            <td className="border border-gray-400 p-2">Thermocouple</td>
-            <td className="border border-gray-400 p-2">0 to 200 °C</td>
-            <td className="border border-gray-400 p-2">1</td>
-          </tr>
-          <tr>
-            <td className="border border-gray-400 p-2"></td>
-            <td className="border border-gray-400 p-2">AC Power Source</td>
-            <td className="border border-gray-400 p-2">Max. 15 kVA</td>
-            <td className="border border-gray-400 p-2">1</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="overflow-x-auto">
+  <table className="min-w-full border-collapse border border-gray-400">
+    <thead>
+      <tr>
+        <th className="border border-gray-400 p-2 text-sm md:text-base whitespace-nowrap">
+          Test Item(1)
+        </th>
+        <th className="border border-gray-400 p-2 text-sm md:text-base whitespace-nowrap">
+          Test Equipment(2)
+        </th>
+        <th className="border border-gray-400 p-2 text-sm md:text-base whitespace-nowrap">
+          Specification(3)
+        </th>
+        <th className="border border-gray-400 p-2 text-sm md:text-base whitespace-nowrap">
+          Qty
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">
+          Conditions for application to ME Equipment or ME Systems
+        </td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">Hybrid Recorder</td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">-50 °C – 200 °C</td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">1</td>
+      </tr>
+      <tr>
+        <td className="border border-gray-400 p-2"></td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">Thermocouple</td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">0 to 200 °C</td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">1</td>
+      </tr>
+      <tr>
+        <td className="border border-gray-400 p-2"></td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">AC Power Source</td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">Max. 15 kVA</td>
+        <td className="border border-gray-400 p-2 text-sm md:text-base">1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 
     
       <h3 className="font-bold text-lg print-dokumen">II.1.2. Test Program</h3>
