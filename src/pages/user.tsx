@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import supabase from '../components/SupabaseClient';
 import Navbar from '../components/navbar';
-
+import Image from 'next/image';
 
 type User = {
   id: string;
@@ -112,14 +112,15 @@ const UserPage = () => {
       )}
     </div>
     {isCurrentUserAdmin && (
-          <div className="absolute top-4 right-4 flex items-center">
-            <button
-              onClick={handleAdminButtonClick}
-              className="bg-red-500 hover:bg-red-800 text-white px-4 mx-4 py-2 rounded"
-            >
-              <span className="text-base font-semibold">Tambahkan User</span>
-            </button>
-          </div>
+          <div className="fixed bottom-4 right-4 z-50">
+          <button
+            onClick={handleAdminButtonClick}
+            className="bg-red-500 hover:bg-red-800 text-white px-4 py-2 rounded shadow-lg"
+          >
+            <span className="text-base font-semibold">Tambahkan User</span>
+          </button>
+        </div>
+        
         )}
   </div>
 </div>
