@@ -5,12 +5,10 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const token = request.cookies.get('token'); // Mengambil token dari cookies
 
-  // Daftar route yang tidak memerlukan autentikasi
+
   const publicPaths = ['/login', '/'];
 
-  // Cek jika user mencoba mengakses route yang dilindungi
   if (!token && !publicPaths.includes(request.nextUrl.pathname)) {
-    // Redirect ke halaman login jika tidak terautentikasi
     return NextResponse.redirect(new URL('/login', request.url));
   }
 
@@ -18,5 +16,5 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/home', '/monitor', '/dokumen', '/user', '/logout'], // Route yang ingin dilindungi
+  matcher: ['/home', '/monitor', '/dokumen', '/user', '/logout', '/home/dokumen', '/home/dokument', '/profil/about', '/profil/setting', '/user/useradmin'], // Route yang ingin dilindungi
 };
