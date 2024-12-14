@@ -15,8 +15,8 @@ interface SensorDataEsp32_1 {
   fan_status: string;
   flow_rate: number;
   sound_detected: string;
-  Anomaly: number;
-  Anomaly_Score: number;
+  anomaly: number;
+  anomaly_Score: number;
 }
 
 interface SensorDataEsp32_2 {
