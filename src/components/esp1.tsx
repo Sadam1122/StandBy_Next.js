@@ -16,7 +16,7 @@ interface SensorDataEsp32_1 {
   flow_rate: number;
   sound_detected: string;
   anomaly: number;
-  anomaly_Score: number;
+  anomaly_score: number;
 }
 
 interface SensorDataEsp32_2 {
@@ -164,7 +164,7 @@ const CombinedDashboard: React.FC = () => {
           </div>
           <div className="bg-gray-100 border border-gray-300 p-4 text-center rounded-lg">
             <h3 className="text-lg font-medium">Anomaly Score</h3>
-            <p className="text-3xl font-bold text-red-500 text-xl">{latestDataEsp32_1.anomaly_Score}%</p>
+            <p className="text-3xl font-bold text-red-500 text-xl">{latestDataEsp32_1.anomaly_score}%</p>
           </div>
         </div>
       </div>
