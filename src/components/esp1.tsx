@@ -15,8 +15,6 @@ interface SensorDataEsp32_1 {
   fan_status: string;
   flow_rate: number;
   sound_detected: string;
-  anomaly: number;
-  anomaly_score: number;
 }
 
 interface SensorDataEsp32_2 {
@@ -30,9 +28,15 @@ interface SensorDataEsp32_2 {
   spo2: number;
 }
 
+interface Anomaly {
+  anomaly: number;
+  anomaly_score: number;
+}
+
 const CombinedDashboard: React.FC = () => {
   const [dataEsp32_1, setDataEsp32_1] = useState<SensorDataEsp32_1[]>([]);
   const [dataEsp32_2, setDataEsp32_2] = useState<SensorDataEsp32_2[]>([]);
+  const [dataanomaly, setDataAnomaly] = useState<Anomaly[]>([]);
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
@@ -56,6 +60,16 @@ const CombinedDashboard: React.FC = () => {
       if (esp32_2_error) throw esp32_2_error;
 
       setDataEsp32_2(esp32_2_data as SensorDataEsp32_2[]);
+
+      const {data: anomaly_data, error: anomaly_error} = await supabase
+        .from('anomaly')
+        .select('*')
+        .order('created_at', { ascending: true });
+
+      if (anomaly_error) throw anomaly_error;
+
+      setDataAnomaly(anomaly_data as Anomaly[]);
+
     } catch (err) {
       if (err instanceof Error) {
         console.error('Error fetching data:', err.message);
@@ -82,13 +96,14 @@ const CombinedDashboard: React.FC = () => {
 
   const latestDataEsp32_1 = dataEsp32_1.length > 0 ? dataEsp32_1[dataEsp32_1.length - 1] : null;
   const latestDataEsp32_2 = dataEsp32_2.length > 0 ? dataEsp32_2[dataEsp32_2.length - 1] : null;
+  const latesDataAnomaly = dataanomaly.length > 0 ? dataanomaly[dataanomaly.length -1]: null;
 
   if (error) return <div className="text-center text-red-500 py-10">{error}</div>;
 
   return (
     <div className="flex flex-col min-h-screen">
   <div className="container mx-auto px-4 py-8">
-    {latestDataEsp32_1 && latestDataEsp32_2 && (
+    {latestDataEsp32_1 && latestDataEsp32_2 && latesDataAnomaly && (
       <div className="mb-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 mb-8">
           <div className="bg-gray-100 border border-gray-300 p-4 text-center rounded-lg">
@@ -160,11 +175,11 @@ const CombinedDashboard: React.FC = () => {
           </div>
           <div className="bg-gray-100 border border-gray-300 p-4 text-center rounded-lg">
             <h3 className="text-lg font-medium">Anomaly</h3>
-            <p className="text-3xl font-bold text-purple-500">{latestDataEsp32_1.anomaly}</p>
+            <p className="text-3xl font-bold text-purple-500">{latesDataAnomaly.anomaly}</p>
           </div>
           <div className="bg-gray-100 border border-gray-300 p-4 text-center rounded-lg">
             <h3 className="text-lg font-medium">Anomaly Score</h3>
-            <p className="text-3xl font-bold text-red-500 text-xl">{latestDataEsp32_1.anomaly_score}%</p>
+            <p className="text-3xl font-bold text-red-500">{latesDataAnomaly.anomaly_score}</p>
           </div>
         </div>
       </div>
