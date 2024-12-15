@@ -12,19 +12,14 @@ type User = {
   email: string;
   avatar_url: string;
   is_admin: boolean;
-  is_man: boolean;
-  no_hp: string;
   updated_at: string;
 };
 
 const CreateUserPage = () => {
-  const [username, setUsername] = useState('');
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [noHp, setNoHp] = useState('');
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isMan, setIsMan] = useState(true);
   const [avatar, setAvatar] = useState<File | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -105,12 +100,9 @@ const CreateUserPage = () => {
         password,
         options: {
           data: {
-            username,
             full_name: fullName,
             avatar_url: avatarUrl,
             is_admin: isAdmin,
-            is_man: isMan,
-            no_hp: noHp,
             updated_at: new Date().toISOString(),
           },
         },
@@ -139,14 +131,6 @@ const CreateUserPage = () => {
         <div className="w-full max-w-md space-y-4">
           <input
             type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="border border-gray-300 rounded-lg p-3 w-full"
-          />
-
-          <input
-            type="text"
             placeholder="Full Name"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -169,42 +153,13 @@ const CreateUserPage = () => {
             className="border border-gray-300 rounded-lg p-3 w-full"
           />
 
-          <input
-            type="text"
-            placeholder="No HP"
-            value={noHp}
-            onChange={(e) => setNoHp(e.target.value)}
-            className="border border-gray-300 rounded-lg p-3 w-full"
-          />
+          
 
           <input
             type="file"
             onChange={(e) => setAvatar(e.target.files ? e.target.files[0] : null)}
             className="mb-4"
           />
-
-          <div className="flex space-x-4">
-            <label className="flex items-center">
-              <input
-                type="radio"
-                value="man"
-                checked={isMan === true}
-                onChange={() => setIsMan(true)}
-                className="mr-2"
-              />
-              Laki-laki
-            </label>
-            <label className="flex items-center">
-              <input
-                type="radio"
-                value="woman"
-                checked={isMan === false}
-                onChange={() => setIsMan(false)}
-                className="mr-2"
-              />
-              Perempuan
-            </label>
-          </div>
 
           <div className="flex space-x-4">
             <label className="flex items-center">
@@ -246,8 +201,6 @@ const CreateUserPage = () => {
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nama</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Role</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Gender</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">No HP</th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
               </tr>
             </thead>
@@ -265,11 +218,7 @@ const CreateUserPage = () => {
                   <td className="px-6 py-4 whitespace-nowrap">{user.email}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {user.is_admin ? 'Admin' : 'Staff'}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    {user.is_man ? 'Laki-laki' : 'Perempuan'}
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">{user.no_hp}</td>
+                  </td> 
                   <td className="px-6 py-4 whitespace-nowrap">{user.updated_at}</td>
                 </tr>
               ))}
