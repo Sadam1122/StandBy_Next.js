@@ -20,10 +20,10 @@ const HomePage: React.FC = () => {
       <Botpress />
       <DisplayPDFs />
       <div className="flex space-x-4 justify-center items-center mb-10">
-        <button
+       <button
           onClick={dokumen}
           className="px-3 py-1 bg-red-500 hover:bg-red-800 text-white font-semibold rounded">
-          Pergi Ke Halaman Dokument Test Report
+          <span className="text-sm font-semibold">Pergi Ke Halaman Dokument Test Report</span>
         </button>
         <button
           onClick={handleAdminButtonClicks}
