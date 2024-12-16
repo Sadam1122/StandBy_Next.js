@@ -23,7 +23,7 @@ const HomePage: React.FC = () => {
        <button
           onClick={dokumen}
           className="px-3 py-1 bg-red-500 hover:bg-red-800 text-white font-semibold rounded">
-          <span className="text-sm font-semibold">Pergi Ke Halaman Dokument Test Report</span>
+          <span className="text-sm font-semibold">Dokumen Laporan</span>
         </button>
         <button
           onClick={handleAdminButtonClicks}
