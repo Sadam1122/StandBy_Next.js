@@ -11,7 +11,7 @@ const Botpress: React.FC = () => {
       script.async = true;
       document.body.appendChild(script);
       const configScript = document.createElement('script');
-      configScript.src = "https://files.bpcontent.cloud/2024/10/03/01/20241003014651-SMMMGG71.js";
+      configScript.src = "https://files.bpcontent.cloud/2024/12/16/15/20241216155017-BBVAMVZO.js";
       configScript.async = true;
       document.body.appendChild(configScript);
     };
@@ -22,7 +22,7 @@ const Botpress: React.FC = () => {
     }
 
     return () => {
-      const scripts = document.querySelectorAll('script[src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"], script[src="https://files.bpcontent.cloud/2024/10/03/01/20241003014651-SMMMGG71.js"]');
+      const scripts = document.querySelectorAll('script[src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"], script[src="https://files.bpcontent.cloud/2024/12/16/15/20241216155017-BBVAMVZO.js"]');
       scripts.forEach(script => script.remove());
     };
   }, [router.pathname]); 
