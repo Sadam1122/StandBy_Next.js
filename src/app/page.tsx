@@ -44,7 +44,7 @@ const LoginPage = () => {
       setError(error.message);
     } else {
       const { data: { session } } = await supabase.auth.getSession();
-      document.cookie = `token=${session?.access_token}; path=/home;`;
+      document.cookie = `token=${session?.access_token}; path=/;`;
       router.push('/home');
     }
   };
