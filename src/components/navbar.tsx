@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import logo from '../assets/standby.png'; 
 import Image from 'next/image';
 
-
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false); 
 
